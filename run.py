@@ -25,9 +25,12 @@ print("\nThe word you're trying to guess has " + str(num_of_letters) + " letters
 #Create a list for positions of letters that match word
 positions = [x for x in range(num_of_letters)]
 
-# Create blank spaces for each letter in word
+# Create blank spaces for each letter in word to show player in console
 word_string = "_ " * num_of_letters
 print("\n" + word_string + "\n")
+
+# Create a list from word string to update as player makes correct guesses
+list_of_word_in_play = list(word_string)
 
 # Create list of letters that were guessed
 guessed_letters = []
@@ -42,25 +45,59 @@ attempts = 0
 won = False
 
 # while not won and attempts < 6:
+#     # Create variable for player's guess
+#     guess = input("Please guess a letter or you can try to guess the word.").upper()
+#     for position, letter in zip(positions, word_letters):
+#         if guess.isalpha() and len(guess) == 1:
+#             if guess in guessed_letters:
+#                 print("You already guessed this letter.")
+#             elif guess == letter.upper():
+#                 print(position, letter)
+#                 guessed_letters.append(guess)
+#                 print("Your letter guess is correct.")
+#             else:
+#                 print("the letter guess is not correct")
+#                 guessed_letters.append(guess)
+#                 attempts += 1
+#         elif guess.isalpha() and len(guess) == len(word):
+#             if guess in guessed_words:
+#                 print("You already guessed this word.")
+#             elif guess == word.upper():
+#                 print("Congrats! Your word guess is correct!")
+#                 won = True
+#             else:
+#                 print("Your word guess is incorrect, please try again.")
+#                 guessed_words.append(guess)
+#                 attempts += 1
+#         else:
+#             print("You did not enter a letter or word, please try again.")
+
+while not won and attempts < 6:
     # Create variable for player's guess
-guess = input("Please guess a letter or you can try to guess the word.").upper()
-
-# for letter in word_letters:
-#     if guess == letter.upper():
-#         print(letter)
-#         guessed_letters.append(guess)
-#         print(guessed_letters)
-#         correct_letter = guess
-#         print("correct")
-#     else:
-#         correct_letter = "wrong"
-# print(correct_letter)
-
-for position, letter in zip(positions, word_letters):
-    if guess == letter.upper():
-        print(position, letter)
-        print("correct")
+    guess = input("Please guess a letter or you can try to guess the word.").upper()
+    if guess.isalpha() and len(guess) == 1:
+            if guess in guessed_letters:
+                print("You already guessed this letter.")
+            elif guess not in word:
+                print("the letter guess is not correct")
+                guessed_letters.append(guess)
+                attempts += 1
+            else:
+                print("Your letter guess is correct.")
+                guessed_letters.append(guess)
+                for position, letter in zip(positions, word_letters):
+                    list_of_word_in_play[position] = guess
+    elif guess.isalpha() and len(guess) == len(word):
+        if guess in guessed_words:
+            print("You already guessed this word.")
+        elif guess == word.upper():
+            print("Congrats! Your word guess is correct!")
+            won = True
+        else:
+            print("Your word guess is incorrect, please try again.")
+            guessed_words.append(guess)
+            attempts += 1
     else:
-        print("not correct")
+        print("You did not enter a letter or word, please try again.")
 
 
