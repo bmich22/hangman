@@ -36,8 +36,6 @@ positions = [x for x in range(num_of_letters)]
 word_string = ["_" for x in range(num_of_letters)]
 display_wordstring = " ".join(word_string)
 
-# Create a list from word string to update as player makes correct guesses
-
 # Create list of letters that were guessed
 guessed_letters = []
 
@@ -53,10 +51,31 @@ attempts = 0
 # Create variable for puzzle not solved
 won = False
 
+def game_over(won, attempts):
+    if attempts >= 6:
+        os.system('clear')
+        print("\nGAME OVER!")
+        print("Sorry, you lose!\n")
+        print("The word was " + word + ".\n")
+        print(display_hangman(attempts))
+        # add function to play again or quit
+    if won:
+        print("The word was " + word +".")
+        print("""
+        ********  HANGMAN  **********
+        *****************************
+        ***                       ***
+        ***    CONGRATULATIONS    ***
+        ***       YOU WON!!       ***
+        ***                       ***
+        ***                       ***
+        *****************************
+        *****************************
+        """)
+
 def display_hangman(attempts):
     if attempts == 0:
         hangman_result = """
-        \n
         ********  HANGMAN  **********
         *****************************
         ***      -----------      ***
@@ -71,11 +90,9 @@ def display_hangman(attempts):
         ***                       ***
         *** YOU HAVE SIX CHANCES  ***
         *****************************
-        \n
         """
     elif attempts == 1:
         hangman_result = """
-        \n
         *****************************
         ***      -----------      ***
         ***      |         |      ***
@@ -89,12 +106,10 @@ def display_hangman(attempts):
         ***                       ***
         *** YOU HAVE FIVE CHANCES ***
         *****************************
-        \n
         """
 
     elif attempts == 2:
         hangman_result = """
-        \n
         *****************************
         ***      -----------      ***
         ***      |         |      ***
@@ -107,12 +122,10 @@ def display_hangman(attempts):
         ***                       ***
         *** YOU HAVE FOUR CHANCES ***
         *****************************
-        \n
         """
 
     elif attempts == 3:
         hangman_result = """
-        \n
         *****************************
         ***      -----------      ***
         ***      |         |      ***
@@ -125,12 +138,10 @@ def display_hangman(attempts):
         ***                       ***
         *** YOU HAVE THREE CHANCES **
         *****************************
-        \n
         """
 
     elif attempts == 4:
         hangman_result = """
-        \n
         *****************************
         ***      -----------      ***
         ***      |         |      ***
@@ -143,13 +154,11 @@ def display_hangman(attempts):
         ***                       ***
         ***  YOU HAVE TWO CHANCES ***
         *****************************
-        \n
         """
          
 
     elif attempts == 5:
         hangman_result = """
-        \n
         *****************************
         ***      -----------      ***
         ***      |         |      ***
@@ -162,12 +171,10 @@ def display_hangman(attempts):
         ***                       ***
         ** YOU HAVE ONE MORE CHANCE *
         *****************************
-        \n
         """
 
     else:
         hangman_result = """
-        \n
         *****************************
         ***      -----------      ***
         ***      |         |      ***
@@ -180,10 +187,8 @@ def display_hangman(attempts):
         ***                       ***
         ***   SORRY, YOU LOSE!    ***
         *****************************
-        \n
         """
     return hangman_result
-
 
 while not won and attempts < 6:
     # Create variable for player's guess
@@ -195,42 +200,47 @@ while not won and attempts < 6:
     if guess.isalpha() and len(guess) == 1:
             if guess in guessed_letters:
                 os.system('clear')
-                print("\nYou already guessed the letter " + guess + "\n")
+                print("\nYou already guessed the letter " + guess + ".")
                 # print(display_wordstring)
                 print("\n")
                 # run display hangman
             elif guess not in word:
                 os.system('clear')
-                print("\nThe letter " + guess + " is not correct")
+                print("\nIncorrect! There is no letter " + guess + " in the word.")
                 guessed_letters.append(guess)
                 attempts += 1
             else:
                 os.system('clear')
-                print("\nYour letter guess is correct.")
+                print("\nCorrect! " + guess + " is in the word.")
                 guessed_letters.append(guess)
                 guessed_correct_letters.append(guess)
                 for position, letter in zip(positions, word_letters):
                     if word_letters[position] == guess:
                         word_string[position] = guess
                         display_wordstring = " ".join(word_string)
-                # print(display_wordstring)
                 # Test if word is complete
                 guessed_correct_letters.sort()
                 correct_letters.sort()
+                print(guessed_correct_letters)
+                print(correct_letters)
                 if guessed_correct_letters == correct_letters:
-                    print("Congratulations, you won!")
-                    exit()
-                    # Add call to function to play again or quit
-    elif guess.isalpha() and len(guess) == len(word):
+                    won=True
+    elif guess.isalpha() and len(guess) > 1:
         if guess in guessed_words:
             print("You already guessed this word.")
         elif guess == word.upper():
             print("Congrats! Your word guess is correct!")
             won = True
         else:
+            os.system('clear')
             print("Your word guess is incorrect, please try again.")
             guessed_words.append(guess)
             attempts += 1
     else:
+        os.system('clear')
         print("You did not enter a letter or word, please try again.")
-print("\nGAME OVER, the word was " + word + ", sorry you lose!")
+game_over(won, attempts)
+# os.system('clear')
+# print("\nGAME OVER!")
+# print("The word was " + word + ".")
+# print("Sorry, you lose!\n")
