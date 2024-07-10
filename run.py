@@ -7,6 +7,7 @@ def choose_word():
     word = random.choice(word_list).upper()
     return word
 
+# Play game
 def play_game(word):
     # Convert word into a string of its letters
     word_letters = list(word)
@@ -88,6 +89,7 @@ def play_game(word):
             print("Oops!!\nYou did not enter a letter or word, please try again.\n")
     game_over(word, won, attempts)
 
+# Display Hangman based on number of wrong attempts
 def display_hangman(attempts):
     if attempts == 0:
         hangman_result = """
@@ -140,7 +142,7 @@ def display_hangman(attempts):
         """
 
     elif attempts == 3:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -156,7 +158,7 @@ def display_hangman(attempts):
         """
 
     elif attempts == 4:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -173,7 +175,7 @@ def display_hangman(attempts):
          
 
     elif attempts == 5:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -189,7 +191,7 @@ def display_hangman(attempts):
         """
 
     else:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -205,6 +207,7 @@ def display_hangman(attempts):
         """
     return hangman_result
 
+# Show win or lost to player
 def game_over(word, won, attempts):
     if attempts >= 6:
         os.system('clear')
@@ -229,22 +232,41 @@ def game_over(word, won, attempts):
         print("Congratulations, you got the word!\n")
         continue_or_quit()
 
+# Ask player to continue playing or quit
 def continue_or_quit():
-    reply = input("Would you like to play again?\nPlease enter Y to play again or N to quit.").upper()
-    if reply == "Y":
-        os.system('clear')
-        main()
-    else:
-        print("\nThank you for playing today!\nGoodbye!\n")
-        exit()
-    
+    play_again = False
+    while not play_again:
+        reply = input("Would you like to play again?\nPlease enter Y to play again and N to quit.").upper()
+        if reply == "Y":
+            os.system('clear')
+            play_again = True
+            main()
+        elif reply == "N":
+            print("\nThank you for playing today!\nGoodbye!\n")
+            exit()
+        else:
+            print("\nYour entry was invalid.\n")
+
+# Main function    
 def main():
-    print("**************************************")
-    print("                                  ****")
-    print("WOULD YOU LIKE TO PLAY HANGMAN?   ****")
-    print("                                  ****")
-    print("**************************************\n")
-    name = input("Please enter your name?  ")
+    print("""
+\n
+*****************************    
+LET'S PLAY A              ***
+GAME OF HANGMAN.          ***
+*****************************
+***      -----------      ***
+***      |         |      ***
+***      |         |      ***
+***      |                ***
+***      |                ***
+***      |                ***
+***      |                ***
+***      |                ***
+***      |                ***
+***                       ***
+*****************************\n""")
+    name = input("Please enter your name:  ")
     os.system('clear')
     print("\nHello, " + name.capitalize() + ".\n")
     print("If you make six wrong guesses, you lose!\n")
