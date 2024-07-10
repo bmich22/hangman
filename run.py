@@ -140,7 +140,7 @@ def display_hangman(attempts):
         """
 
     elif attempts == 3:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -156,7 +156,7 @@ def display_hangman(attempts):
         """
 
     elif attempts == 4:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -173,7 +173,7 @@ def display_hangman(attempts):
          
 
     elif attempts == 5:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -189,7 +189,7 @@ def display_hangman(attempts):
         """
 
     else:
-        hangman_result = """
+        hangman_result = r"""
 *****************************
 ***      -----------      ***
 ***      |         |      ***
@@ -230,21 +230,38 @@ def game_over(word, won, attempts):
         continue_or_quit()
 
 def continue_or_quit():
-    reply = input("Would you like to play again?\nPlease enter Y to play again or N to quit.").upper()
-    if reply == "Y":
-        os.system('clear')
-        main()
-    else:
-        print("\nThank you for playing today!\nGoodbye!\n")
-        exit()
+    play_again = False
+    while not play_again:
+        reply = input("Would you like to play again?\nPlease enter Y to play again and N to quit.").upper()
+        if reply == "Y":
+            os.system('clear')
+            play_again = True
+            main()
+        elif reply == "N":
+            print("\nThank you for playing today!\nGoodbye!\n")
+            exit()
+        else:
+            print("\nYour entry was invalid.\n")
     
 def main():
-    print("**************************************")
-    print("                                  ****")
-    print("WOULD YOU LIKE TO PLAY HANGMAN?   ****")
-    print("                                  ****")
-    print("**************************************\n")
-    name = input("Please enter your name?  ")
+    print("""
+\n
+*****************************    
+LET'S PLAY A              ***
+GAME OF HANGMAN.          ***
+*****************************
+***      -----------      ***
+***      |         |      ***
+***      |         |      ***
+***      |                ***
+***      |                ***
+***      |                ***
+***      |                ***
+***      |                ***
+***      |                ***
+***                       ***
+*****************************\n""")
+    name = input("Please enter your name:  ")
     os.system('clear')
     print("\nHello, " + name.capitalize() + ".\n")
     print("If you make six wrong guesses, you lose!\n")
