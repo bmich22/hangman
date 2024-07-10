@@ -15,22 +15,18 @@ print("Let's begin.")
 
 # Choose a random word from the word list
 word = random.choice(word_list).upper()
-# print("The hangman word is: " + word)
 
 # Convert word into a string of its letters
 word_letters = list(word)
-# print(word_letters)
 
 # Create list of correct letters in word with no duplicates in order to compare to guessed letters list
 correct_letters = list(dict.fromkeys(word_letters))
-# print(correct_letters)
 
 # Calculate number of letters in word
 num_of_letters = len(word)
 
 #Create a list for positions of letters that match word
 positions = [x for x in range(num_of_letters)]
-# print(positions)
 
 # Create blank spaces for each letter in word to show player in console
 word_string = ["_" for x in range(num_of_letters)]
@@ -45,7 +41,7 @@ guessed_words = []
 # Create list of correct letters that were guessed
 guessed_correct_letters = []
 
-# Create variable to count the number of attempts
+# Create variable to count the number of wrong attempts
 attempts = 0
 
 # Create variable for puzzle not solved
@@ -71,6 +67,7 @@ def game_over(won, attempts):
         *****************************
         *****************************
         """)
+        # add function to play again or quit
 
 def display_hangman(attempts):
     if attempts == 0:
@@ -200,9 +197,7 @@ while not won and attempts < 6:
             if guess in guessed_letters:
                 os.system('clear')
                 print("\nYou already guessed the letter " + guess + ".")
-                # print(display_wordstring)
                 print("\n")
-                # run display hangman
             elif guess not in word:
                 os.system('clear')
                 print("\nIncorrect! There is no letter " + guess + " in the word.")
