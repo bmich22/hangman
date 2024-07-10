@@ -1,4 +1,5 @@
 import random
+import os
 from wordlist import word_list
 
 print("**************************************")
@@ -7,7 +8,7 @@ print("WOULD YOU LIKE TO PLAY HANGMAN?   ****")
 print("                                  ****")
 print("**************************************\n")
 name = input("Please enter your name?  ")
-print("\nHello " + name + ", let's get started.\n")
+print("\nHello " + name + ", let's begin.\n")
 print("If you make six wrong guesses, you lose!\n")
 
 # Choose a random word from the word list
@@ -21,6 +22,36 @@ print(word_letters)
 # Create list of correct letters in word with no duplicates in order to compare to guessed letters list
 correct_letters = list(dict.fromkeys(word_letters))
 print(correct_letters)
+
+#display hangman
+print("\n")
+print("*****************************")
+print("***      -----------      ***")
+print("***      |         |      ***")
+print("***      |         |      ***")
+print("***      |                ***")
+print("***      |                ***")
+print("***      |                ***")
+print("***      |                ***")
+print("***      |                ***")
+print("***      |                ***")
+print("***                       ***")
+print("*****************************")
+print("\n")
+
+print("\n")
+print("*****************************")
+print("***      -----------      ***")
+print("***      |         |      ***")
+print("***      |         |      ***")
+print("***      |        ( )     ***")
+print("***      |        \|/     ***")
+print("***      |         |      ***")
+print("***      |        / \     ***")
+print("***      |                ***")
+print("***                       ***")
+print("*****************************")
+print("\n")
 
 # Calculate number of letters in word
 num_of_letters = len(word)
@@ -56,10 +87,14 @@ won = False
 
 while not won and attempts < 6:
     # Create variable for player's guess
-    guess = input("\nPlease guess a letter or you can try to guess the word.  ").upper()
+    guess = input("Please guess a letter or you can try to guess the word.  ").upper()
     if guess.isalpha() and len(guess) == 1:
             if guess in guessed_letters:
-                print("\nYou already guessed this letter.")
+                os.system('clear')
+                print("\nYou already guessed the letter " + guess + "\n")
+                print(display_wordstring)
+                print("\n")
+                # run display hangman
             elif guess not in word:
                 print("\nThe letter guess is not correct")
                 guessed_letters.append(guess)
@@ -79,6 +114,7 @@ while not won and attempts < 6:
                 if guessed_correct_letters == correct_letters:
                     print("Congratulations, you won!")
                     exit()
+                    # Add call to function to play again or quit
     elif guess.isalpha() and len(guess) == len(word):
         if guess in guessed_words:
             print("You already guessed this word.")
@@ -89,7 +125,10 @@ while not won and attempts < 6:
             print("Your word guess is incorrect, please try again.")
             guessed_words.append(guess)
             attempts += 1
+            if attempts == 6:
+                print("GAME OVER, sorry you lose!")
     else:
         print("You did not enter a letter or word, please try again.")
+print("\nGAME OVER, the word was " + word + ", sorry you lose!")
 
 
