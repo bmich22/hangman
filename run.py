@@ -18,6 +18,10 @@ print("The hangman word is: " + word)
 word_letters = list(word)
 print(word_letters)
 
+# Create list of correct letters in word with no duplicates in order to compare to guessed letters list
+correct_letters = list(dict.fromkeys(word_letters))
+print(correct_letters)
+
 # Calculate number of letters in word
 num_of_letters = len(word)
 print("\nThe word you're trying to guess has " + str(num_of_letters) + " letters.\n")
@@ -27,8 +31,6 @@ positions = [x for x in range(num_of_letters)]
 # print(positions)
 
 # Create blank spaces for each letter in word to show player in console
-# word_string = "_" * num_of_letters
-# print("\n" + word_string + " " + "\n")
 word_string = ["_" for x in range(num_of_letters)]
 # print(word_string)
 display_wordstring = " ".join(word_string)
@@ -42,6 +44,9 @@ guessed_letters = []
 
 # Create list of words that were guessed
 guessed_words = []
+
+# Create list of correct letters that were guessed
+guessed_correct_letters = []
 
 # Create variable to count the number of attempts
 attempts = 0
@@ -62,11 +67,18 @@ while not won and attempts < 6:
             else:
                 print("\nYour letter guess is correct.")
                 guessed_letters.append(guess)
+                guessed_correct_letters.append(guess)
                 for position, letter in zip(positions, word_letters):
                     if word_letters[position] == guess:
                         word_string[position] = guess
                         display_wordstring = " ".join(word_string)
                 print(display_wordstring)
+                # Test if word is complete
+                guessed_correct_letters.sort()
+                correct_letters.sort()
+                if guessed_correct_letters == correct_letters:
+                    print("Congratulations, you won!")
+                    exit()
     elif guess.isalpha() and len(guess) == len(word):
         if guess in guessed_words:
             print("You already guessed this word.")
