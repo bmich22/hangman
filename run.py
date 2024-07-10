@@ -8,54 +8,25 @@ print("WOULD YOU LIKE TO PLAY HANGMAN?   ****")
 print("                                  ****")
 print("**************************************\n")
 name = input("Please enter your name?  ")
-print("\nHello " + name + ", let's begin.\n")
+os.system('clear')
+print("\nHello, " + name.capitalize() + ".\n")
 print("If you make six wrong guesses, you lose!\n")
+print("Let's begin.")
 
 # Choose a random word from the word list
 word = random.choice(word_list).upper()
-print("The hangman word is: " + word)
+# print("The hangman word is: " + word)
 
 # Convert word into a string of its letters
 word_letters = list(word)
-print(word_letters)
+# print(word_letters)
 
 # Create list of correct letters in word with no duplicates in order to compare to guessed letters list
 correct_letters = list(dict.fromkeys(word_letters))
-print(correct_letters)
-
-#display hangman
-print("\n")
-print("*****************************")
-print("***      -----------      ***")
-print("***      |         |      ***")
-print("***      |         |      ***")
-print("***      |                ***")
-print("***      |                ***")
-print("***      |                ***")
-print("***      |                ***")
-print("***      |                ***")
-print("***      |                ***")
-print("***                       ***")
-print("*****************************")
-print("\n")
-
-print("\n")
-print("*****************************")
-print("***      -----------      ***")
-print("***      |         |      ***")
-print("***      |         |      ***")
-print("***      |        ( )     ***")
-print("***      |        \|/     ***")
-print("***      |         |      ***")
-print("***      |        / \     ***")
-print("***      |                ***")
-print("***                       ***")
-print("*****************************")
-print("\n")
+# print(correct_letters)
 
 # Calculate number of letters in word
 num_of_letters = len(word)
-print("\nThe word you're trying to guess has " + str(num_of_letters) + " letters.\n")
 
 #Create a list for positions of letters that match word
 positions = [x for x in range(num_of_letters)]
@@ -63,10 +34,7 @@ positions = [x for x in range(num_of_letters)]
 
 # Create blank spaces for each letter in word to show player in console
 word_string = ["_" for x in range(num_of_letters)]
-# print(word_string)
 display_wordstring = " ".join(word_string)
-print(display_wordstring)
-print("\n")
 
 # Create a list from word string to update as player makes correct guesses
 
@@ -85,21 +53,159 @@ attempts = 0
 # Create variable for puzzle not solved
 won = False
 
+def display_hangman(attempts):
+    if attempts == 0:
+        hangman_result = """
+        \n
+        ********  HANGMAN  **********
+        *****************************
+        ***      -----------      ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |                ***
+        ***      |                ***
+        ***      |                ***
+        ***      |                ***
+        ***      |                ***
+        ***      |                ***
+        ***                       ***
+        *** YOU HAVE SIX CHANCES  ***
+        *****************************
+        \n
+        """
+    elif attempts == 1:
+        hangman_result = """
+        \n
+        *****************************
+        ***      -----------      ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |        ( )     ***
+        ***      |                ***
+        ***      |                ***
+        ***      |                ***
+        ***      |                ***
+        ***      |                ***
+        ***                       ***
+        *** YOU HAVE FIVE CHANCES ***
+        *****************************
+        \n
+        """
+
+    elif attempts == 2:
+        hangman_result = """
+        \n
+        *****************************
+        ***      -----------      ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |        ( )     ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |                ***
+        ***      |                ***
+        ***                       ***
+        *** YOU HAVE FOUR CHANCES ***
+        *****************************
+        \n
+        """
+
+    elif attempts == 3:
+        hangman_result = """
+        \n
+        *****************************
+        ***      -----------      ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |        ( )     ***
+        ***      |        \|      ***
+        ***      |         |      ***
+        ***      |                ***
+        ***      |                ***
+        ***                       ***
+        *** YOU HAVE THREE CHANCES **
+        *****************************
+        \n
+        """
+
+    elif attempts == 4:
+        hangman_result = """
+        \n
+        *****************************
+        ***      -----------      ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |        ( )     ***
+        ***      |        \|/     ***
+        ***      |         |      ***
+        ***      |                ***
+        ***      |                ***
+        ***                       ***
+        ***  YOU HAVE TWO CHANCES ***
+        *****************************
+        \n
+        """
+         
+
+    elif attempts == 5:
+        hangman_result = """
+        \n
+        *****************************
+        ***      -----------      ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |        ( )     ***
+        ***      |        \|/     ***
+        ***      |         |      ***
+        ***      |        /       ***
+        ***      |                ***
+        ***                       ***
+        ** YOU HAVE ONE MORE CHANCE *
+        *****************************
+        \n
+        """
+
+    else:
+        hangman_result = """
+        \n
+        *****************************
+        ***      -----------      ***
+        ***      |         |      ***
+        ***      |         |      ***
+        ***      |        ( )     ***
+        ***      |        \|/     ***
+        ***      |         |      ***
+        ***      |        / \     ***
+        ***      |                ***
+        ***                       ***
+        ***   SORRY, YOU LOSE!    ***
+        *****************************
+        \n
+        """
+    return hangman_result
+
+
 while not won and attempts < 6:
     # Create variable for player's guess
+    print(display_hangman(attempts))
+    print("The word you're trying to guess has " + str(num_of_letters) + " letters.\n")
+    print(display_wordstring)
+    print("\n")
     guess = input("Please guess a letter or you can try to guess the word.  ").upper()
     if guess.isalpha() and len(guess) == 1:
             if guess in guessed_letters:
                 os.system('clear')
                 print("\nYou already guessed the letter " + guess + "\n")
-                print(display_wordstring)
+                # print(display_wordstring)
                 print("\n")
                 # run display hangman
             elif guess not in word:
-                print("\nThe letter guess is not correct")
+                os.system('clear')
+                print("\nThe letter " + guess + " is not correct")
                 guessed_letters.append(guess)
                 attempts += 1
             else:
+                os.system('clear')
                 print("\nYour letter guess is correct.")
                 guessed_letters.append(guess)
                 guessed_correct_letters.append(guess)
@@ -107,7 +213,7 @@ while not won and attempts < 6:
                     if word_letters[position] == guess:
                         word_string[position] = guess
                         display_wordstring = " ".join(word_string)
-                print(display_wordstring)
+                # print(display_wordstring)
                 # Test if word is complete
                 guessed_correct_letters.sort()
                 correct_letters.sort()
@@ -125,10 +231,6 @@ while not won and attempts < 6:
             print("Your word guess is incorrect, please try again.")
             guessed_words.append(guess)
             attempts += 1
-            if attempts == 6:
-                print("GAME OVER, sorry you lose!")
     else:
         print("You did not enter a letter or word, please try again.")
 print("\nGAME OVER, the word was " + word + ", sorry you lose!")
-
-
