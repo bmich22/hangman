@@ -82,13 +82,13 @@ def play_game(word):
                     # Test if word is complete
                     guessed_correct_letters.sort()
                     correct_letters.sort()
-                    print(guessed_correct_letters)
-                    print(correct_letters)
+                    # print(guessed_correct_letters)
+                    # print(correct_letters)
                     if guessed_correct_letters == correct_letters:
                         won=True
         elif guess.isalpha() and len(guess) > 1:
             if guess in guessed_words:
-                prCyan("You already guessed this word.")
+                prCyan("/nYou already guessed this word.")
             elif guess == word.upper():
                 prCyan("Congrats! Your word guess is correct!")
                 won = True
@@ -267,26 +267,6 @@ def continue_or_quit():
 
 # Main function    
 def main():
-#     print("""
-# \n
-# *****************************    
-# LET'S PLAY A              ***
-# GAME OF HANGMAN.          ***
-# *****************************
-# ***      -----------      ***
-# ***      |         |      ***
-# ***      |         |      ***
-# ***      |                ***
-# ***      |                ***
-# ***      |                ***
-# ***      |                ***
-# ***      |                ***
-# ***      |                ***
-# ***                       ***
-# *****************************\n""")
-#     prCyan("""
-# \n
-# *****************************""") 
     print("""\n
 LET'S PLAY A GAME OF HANGMAN.
 """)
