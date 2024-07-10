@@ -54,9 +54,8 @@ won = False
 def game_over(won, attempts):
     if attempts >= 6:
         os.system('clear')
-        print("\nGAME OVER!")
-        print("Sorry, you lose!\n")
-        print("The word was " + word + ".\n")
+        print("\n")
+        print("GAME OVER!\nYou lost.\nThe word was " + word + ".")    
         print(display_hangman(attempts))
         # add function to play again or quit
     if won:
@@ -185,7 +184,7 @@ def display_hangman(attempts):
         ***      |        / \     ***
         ***      |                ***
         ***                       ***
-        ***   SORRY, YOU LOSE!    ***
+        ***   SORRY, YOU LOST!    ***
         *****************************
         """
     return hangman_result
@@ -240,7 +239,3 @@ while not won and attempts < 6:
         os.system('clear')
         print("You did not enter a letter or word, please try again.")
 game_over(won, attempts)
-# os.system('clear')
-# print("\nGAME OVER!")
-# print("The word was " + word + ".")
-# print("Sorry, you lose!\n")
