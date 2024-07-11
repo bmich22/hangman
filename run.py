@@ -4,16 +4,15 @@ from wordlist import word_list
 
 # Add colors 
 def prCyan(skk): print("\033[96m {}\033[00m" .format(skk))
-
 def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
-
 def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
+def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 
 """
 Get the name of the new player 
 """
 def get_name():
-    print("""\n
+    prYellow("""\n
 LET'S PLAY A GAME OF HANGMAN.
 """)
     prCyan("""
@@ -105,29 +104,31 @@ def play_game(word):
     # Create variable for puzzle not solved
     won = False
 
+    message = ""
+
     while not won and attempts < 6:
-        # Create variable for player's guess
+        # Create variable for player's guess and
+        # print messages and outcomes
         print(display_hangman(attempts))
         prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.\n")
         print("Letters already chosen: ")
         print(guessed_letters)
         print("\n")
         prCyan(display_wordstring)
-        print("\n")
+        prYellow(message)
         guess = input("Please guess a letter or you can try to guess the word.\n").upper()
         if guess.isalpha() and len(guess) == 1:
                 if guess in guessed_letters:
                     os.system('clear')
-                    prCyan("\nYou already guessed the letter " + guess + ".")
-                    print("\n")
+                    message = "\nYou already guessed the letter " + guess + "."
                 elif guess not in word:
                     os.system('clear')
-                    prCyan("\nIncorrect! There is no letter " + guess + " in the word.")
+                    message = "\nIncorrect! There is no letter " + guess + " in the word."
                     guessed_letters.append(guess)
                     attempts += 1
                 else:
                     os.system('clear')
-                    prCyan("\nCorrect! " + guess + " is in the word.")
+                    message ="\nCorrect! " + guess + " is in the word."
                     guessed_letters.append(guess)
                     guessed_correct_letters.append(guess)
                     for position, letter in zip(positions, word_letters):
@@ -141,18 +142,18 @@ def play_game(word):
                         won=True
         elif guess.isalpha() and len(guess) > 1:
             if guess in guessed_words:
-                prCyan("/nYou already guessed this word.")
+                message = "/nYou already guessed this word."
             elif guess == word.upper():
-                prCyan("Congrats! Your word guess is correct!")
+                message = "Congrats! Your word guess is correct!"
                 won = True
             else:
                 os.system('clear')
-                prCyan("Your word guess is incorrect, please try again.")
+                message = "Your word guess is incorrect, please try again."
                 guessed_words.append(guess)
                 attempts += 1
         else:
             os.system('clear')
-            prCyan("Oops!!\nYou did not enter a letter or word, please try again.\n")
+            message = "Oops!!\nYou did not enter a letter or word, please try again.\n"
     game_over(word, won, attempts)
 
 """
@@ -162,7 +163,6 @@ def display_hangman(attempts):
     if attempts == 0:
         hangman_result = """
 ********  HANGMAN  **********
-
       -----------      
       |         |      
       |         |      
@@ -170,8 +170,7 @@ def display_hangman(attempts):
       |                
       |                
       |                
-      |                
-      |                
+      |                              
                        
     WRONG ANSWERS: 0 / 6
 
@@ -187,8 +186,7 @@ def display_hangman(attempts):
       |                
       |                
       |                
-      |                
-      |                
+      |                               
                        
     WRONG ANSWERS: 1 / 6 
 
@@ -212,7 +210,7 @@ def display_hangman(attempts):
 *****************************"""
 
     elif attempts == 3:
-        hangman_result = r"""
+        hangman_result = r"""         
 ********  HANGMAN  **********
       -----------      
       |         |      
@@ -228,7 +226,7 @@ def display_hangman(attempts):
 *****************************"""
 
     elif attempts == 4:
-        hangman_result = r"""
+        hangman_result = r"""         
 ********  HANGMAN  **********
       -----------      
       |         |      
@@ -245,7 +243,7 @@ def display_hangman(attempts):
          
 
     elif attempts == 5:
-        hangman_result = r"""
+        hangman_result = r"""        
 ********  HANGMAN  **********
       -----------      
       |         |      
