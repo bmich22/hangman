@@ -13,7 +13,7 @@ def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 Get the name of the new player 
 """
 def get_name():
-    prYellow("""\n
+    prYellow("""
 LET'S PLAY A GAME OF HANGMAN.
 """)
     prCyan("""
@@ -21,13 +21,12 @@ LET'S PLAY A GAME OF HANGMAN.
     prRed("""
       -----------      
       |         |      
-      |         |      
+      |         |     
       |                
       |                
       |                
       |                
-      |                
-      |    
+      |                    
     """)            
     
     prCyan("""                        
@@ -44,7 +43,7 @@ def intro_message():
     prCyan("Hello, " + name + ".")
     prCyan("Here is how to play.")
     prCyan("Guess the letters or the whole word.")
-    prCyan("If you make six wrong guesses, you lose!")
+    prCyan("If you make six wrong guesses, you lose!\n")
     choose_word()
 
 """
@@ -57,11 +56,11 @@ def choose_word():
 ********  HANGMAN  **********
       -----------      
       |         |      
-      |         |      
-      |                
-      |   1 = EASY             
-      |   2 = INTERMEDIATE            
-      |   3 = DIFFICULT            
+      |               
+      |   1 = EASY                 
+      |   2 = INTERMEDIATE              
+      |   3 = DIFFICULT        
+      |              
       |                              
 *****************************""")
     valid_choice = False
@@ -79,8 +78,7 @@ def choose_word():
     word = random.choice(word_list[choice]).upper()
     print(word)   
     os.system('clear')
-    prCyan("Okay, "+ name.capitalize() + ".")
-    prCyan("You chose difficulty level: "+ levels_list[choice])
+    prCyan("Okay, "+ name.capitalize() + ". You chose difficulty level: "+ levels_list[choice])
     prCyan("Let's begin!")
     play_game(word)
 
@@ -133,7 +131,7 @@ def play_game(word):
         # Create variable for player's guess and
         # print messages and outcomes
         print(display_hangman(attempts))
-        prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.\n")
+        prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
         print("Letters already chosen: ")
         print(guessed_letters)
         print("\n")
@@ -298,16 +296,16 @@ def game_over(word, won, attempts):
     if attempts >= 6:
         os.system('clear')
         print("\n ")
-        prCyan("GAME OVER!\n")
+        prCyan("GAME OVER!")
         prCyan("Sorry, " + name + ". You lost.\n The word was " + word + ".")    
         prRed(display_hangman(attempts))
         continue_or_quit()
     if won:
         os.system('clear')
         print("\n ")
-        prCyan("Well done, " + name + "!\n")
-        prCyan("The word was " + word +".\n")
-        prCyan("Congratulations, you guessed the word!\n")
+        prCyan("Well done, " + name + "!")
+        prCyan("The word was " + word +".")
+        prCyan("Congratulations, you guessed the word!")
         prPurple("""
 ********  HANGMAN  **********
 *****************************
