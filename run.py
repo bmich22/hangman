@@ -132,12 +132,10 @@ def play_game(word):
         # Create variable for player's guess and
         # print messages and outcomes
         print(display_hangman(attempts))
-        print("\n")
-        prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
         print("Letters already chosen: ")
         print(guessed_letters)
-        print("\n")
-        prCyan(display_wordstring)
+        prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
+        prCyan(" " + display_wordstring)
         prYellow(message)
         guess = input("Please guess a letter or you can try to guess the word.\n").upper()
         if guess.isalpha() and len(guess) == 1:
