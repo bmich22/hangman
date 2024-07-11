@@ -32,7 +32,7 @@ LET'S PLAY A GAME OF HANGMAN.
     
     prCyan("""                        
 *****************************\n""")
-    new_name = input("Please enter your name:  ").capitalize()
+    new_name = input("Please enter your name:  \n").capitalize()
     return new_name
 
 """ 
@@ -41,10 +41,10 @@ Message to new player
 def intro_message():
     os.system('clear')
     print("\n")
-    prCyan("Hello, " + name + ".\n")
+    prCyan("Hello, " + name + ".")
     prCyan("Here is how to play.")
     prCyan("Guess the letters or the whole word.")
-    prCyan("If you make six wrong guesses, you lose!\n")
+    prCyan("If you make six wrong guesses, you lose!")
     choose_word()
 
 """
@@ -63,7 +63,6 @@ def choose_word():
       |   2 = INTERMEDIATE            
       |   3 = DIFFICULT            
       |                              
-
 *****************************""")
     valid_choice = False
     while not valid_choice:
@@ -80,7 +79,6 @@ def choose_word():
     word = random.choice(word_list[choice]).upper()
     print(word)   
     os.system('clear')
-    print("\n")
     prCyan("Okay, "+ name.capitalize() + ".")
     prCyan("You chose difficulty level: "+ levels_list[choice])
     prCyan("Let's begin!")
@@ -90,11 +88,11 @@ def choose_word():
 Message to continuing player 
 """
 def continue_message():
-    print("\n")
-    prCyan("Hello again, " + name.capitalize() + ".\n")
+    os.system('clear')
+    prCyan("Hello again, " + name.capitalize() + ".")
     prCyan("Let's review how to play.")
     prCyan("Guess the letters or the whole word.")
-    prCyan("If you make six wrong guesses, you lose!\n")
+    prCyan("If you make six wrong guesses, you lose!")
     choose_word()
  
 """
@@ -198,7 +196,6 @@ def display_hangman(attempts):
       |                              
                        
     WRONG ANSWERS: 0 / 6
-
 *****************************
         """
     elif attempts == 1:
@@ -214,7 +211,6 @@ def display_hangman(attempts):
       |                               
                        
     WRONG ANSWERS: 1 / 6 
-
 *****************************
         """
 
@@ -231,7 +227,6 @@ def display_hangman(attempts):
       |                
                        
     WRONG ANSWERS: 2 / 6 
-
 *****************************"""
 
     elif attempts == 3:
@@ -247,7 +242,6 @@ def display_hangman(attempts):
       |                
                        
     WRONG ANSWERS: 3 / 6
-
 *****************************"""
 
     elif attempts == 4:
@@ -263,7 +257,6 @@ def display_hangman(attempts):
       |                
                        
     WRONG ANSWERS: 4 / 6 
-
 *****************************"""
          
 
@@ -280,7 +273,6 @@ def display_hangman(attempts):
       |              
                        
     WRONG ANSWERS: 5 / 6
-
 *****************************"""
 
     else:
@@ -296,7 +288,6 @@ def display_hangman(attempts):
       |              
                        
 WRONG ANSWERS: 6/6  YOU LOST!
-
 *****************************"""
     return hangman_result
 
@@ -344,7 +335,7 @@ def continue_or_quit():
             prCyan("\nThanks for playing today, " + name +".\nGoodbye!\n")
             exit()
         else:
-            print("\nYour entry was invalid.\n")
+            prYellow("\nYour entry was invalid.\n")
 
 # name is global variable, intro_message 
 # starts the game for the new player
