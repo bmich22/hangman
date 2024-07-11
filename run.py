@@ -194,7 +194,7 @@ def display_hangman(attempts):
       |                
       |                
       |     
-                                                     
+
     WRONG ANSWERS: 0 / 6                   
 *****************************"""
     elif attempts == 1:
