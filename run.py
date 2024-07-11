@@ -236,7 +236,7 @@ def game_over(word, won, attempts):
         print("\n ")
         prCyan("WELL DONE!\n")
         prCyan("The word was " + word +".\n")
-        prCyan("Congratulations, you got the word!\n")
+        prCyan("Congratulations, you guessed the word!\n")
         prPurple("""
 ********  HANGMAN  **********
 *****************************
@@ -260,7 +260,7 @@ def continue_or_quit():
             play_again = True
             main()
         elif reply == "N":
-            prCyan("\nThank you for playing today!\nGoodbye!\n")
+            prCyan("\nThank you for playing today.\nGoodbye!\n")
             exit()
         else:
             print("\nYour entry was invalid.\n")
