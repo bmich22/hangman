@@ -336,7 +336,7 @@ Ask player to continue playing or quit
 def continue_or_quit():
     play_again = False
     while not play_again:
-        reply = input("\nWould you like to play again?\nPlease enter Y to play again and N to quit.").upper()
+        reply = input("\nWould you like to play again?\nPlease enter Y to play again and N to quit.\n").upper()
         if reply == "Y":
             os.system('clear')
             continue_message()
