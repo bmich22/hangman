@@ -191,9 +191,8 @@ def display_hangman(attempts):
       |                
       |                
       |                                                    
-    WRONG ANSWERS: 0 / 6
-*****************************
-        """
+    
+*** WRONG ANSWERS: 0 / 6 ***"""
     elif attempts == 1:
         hangman_result = """
 ********  HANGMAN  **********
@@ -206,9 +205,7 @@ def display_hangman(attempts):
       |                
       |                               
                        
-    WRONG ANSWERS: 1 / 6 
-*****************************
-        """
+*** WRONG ANSWERS: 1 / 6 ***"""
 
     elif attempts == 2:
         hangman_result = """
@@ -222,8 +219,7 @@ def display_hangman(attempts):
       |                
       |                
                        
-    WRONG ANSWERS: 2 / 6 
-*****************************"""
+*** WRONG ANSWERS: 1 / 6 ***"""
 
     elif attempts == 3:
         hangman_result = r"""         
@@ -236,9 +232,8 @@ def display_hangman(attempts):
       |         |      
       |                
       |                
-                       
-    WRONG ANSWERS: 3 / 6
-*****************************"""
+
+*** WRONG ANSWERS: 3 / 6 ***"""
 
     elif attempts == 4:
         hangman_result = r"""         
@@ -251,9 +246,8 @@ def display_hangman(attempts):
       |         |      
       |                
       |                
-                       
-    WRONG ANSWERS: 4 / 6 
-*****************************"""
+                           
+*** WRONG ANSWERS: 4 / 6 ***"""
          
 
     elif attempts == 5:
@@ -268,8 +262,8 @@ def display_hangman(attempts):
       |        /       
       |              
                        
-    WRONG ANSWERS: 5 / 6
-*****************************"""
+    
+*** WRONG ANSWERS: 5 / 6 ***"""
 
     else:
         hangman_result = r"""
