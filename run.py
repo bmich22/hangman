@@ -1,6 +1,7 @@
 import random
 import os
 from wordlist import word_list
+from wordlist import levels_list
 
 # Add colors 
 def prCyan(skk): print("\033[96m {}\033[00m" .format(skk))
@@ -39,7 +40,9 @@ Message to new player
 """
 def intro_message():
     os.system('clear')
-    prCyan("\nHello, " + name + ".")
+    print("\n")
+    prCyan("Hello, " + name + ".\n")
+    prCyan("Here is how to play.")
     prCyan("Guess the letters or the whole word.")
     prCyan("If you make six wrong guesses, you lose!\n")
     choose_word()
@@ -64,11 +67,11 @@ def choose_word():
 )
     valid_choice = False
     while not valid_choice:
-        difficulty = input("Please enter 1, 2 or 3 to choose a level of difficulty.")
+        difficulty = input("\nPlease enter 1, 2 or 3 to choose a level of difficulty.")
         print(difficulty)
         if difficulty.isnumeric():
             choice = int(difficulty) - 1
-            if choice == 0 or choice > 3:
+            if choice < 0 or choice > 2:
                 prYellow("Invalid. Your entry was not a 1, 2 or 3.   ")
             else:
                 valid_choice = True
@@ -77,18 +80,23 @@ def choose_word():
     word = random.choice(word_list[choice]).upper()
     print(word)   
     os.system('clear')
-    prCyan("\nOkay, "+ name.capitalize() + "\nLet's begin!")
+    print("\n")
+    prCyan("Okay, "+ name.capitalize() + ".")
+    prCyan("You chose difficulty level: "+ levels_list[choice])
+    prCyan("Let's begin!")
     play_game(word)
 
 """
 Message to continuing player 
 """
 def continue_message():
-    prCyan("\nHello again, " + name.capitalize() + ".")
+    print("\n")
+    prCyan("Hello again, " + name.capitalize() + ".\n")
+    prCyan("Let's review how to play.")
     prCyan("Guess the letters or the whole word.")
     prCyan("If you make six wrong guesses, you lose!\n")
     choose_word()
-    play_game(word)
+    # play_game(word)
 
 # # Add colors
 # def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
@@ -318,7 +326,7 @@ def game_over(word, won, attempts):
     if won:
         os.system('clear')
         print("\n ")
-        prCyan("WELL DONE, " + name + "!\n")
+        prCyan("Well done, " + name + "!\n")
         prCyan("The word was " + word +".\n")
         prCyan("Congratulations, you guessed the word!\n")
         prPurple("""
@@ -345,7 +353,7 @@ def continue_or_quit():
             os.system('clear')
             continue_message()
         elif reply == "N":
-            prCyan("\nThank you for playing today.\nGoodbye!\n")
+            prCyan("\nThanks for playing today, " + name +".\nGoodbye!\n")
             exit()
         else:
             print("\nYour entry was invalid.\n")
