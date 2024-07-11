@@ -31,7 +31,7 @@ LET'S PLAY A GAME OF HANGMAN.
     
     prCyan("""                        
 *****************************\n""")
-    new_name = input("Please enter your name:  ")
+    new_name = input("Please enter your name:  ").capitalize()
     return new_name
 
 """ 
@@ -39,7 +39,7 @@ Message to new player
 """
 def intro_message():
     os.system('clear')
-    prCyan("\nHello, " + name.capitalize() + ".")
+    prCyan("\nHello, " + name + ".")
     prCyan("Guess the letters or the whole word.")
     prCyan("If you make six wrong guesses, you lose!\n")
     choose_word()
@@ -48,7 +48,33 @@ def intro_message():
 Choose a random word from the word list  
 """
 def choose_word():
-    word = random.choice(word_list).upper()
+    print("What level of difficulty would you like to play?")
+    print("""
+********  HANGMAN  **********
+      -----------      
+      |         |      
+      |         |      
+      |                
+      |   1 = EASY             
+      |   2 = INTERMEDIATE            
+      |   3 = DIFFICULT            
+      |                              
+
+*****************************"""
+)
+    valid_choice = False
+    while not valid_choice:
+        difficulty = input("Please enter 1, 2 or 3 to choose a level of difficulty.")
+        print(difficulty)
+        if not difficulty.isnumeric():
+            prYellow("Invalid. Your entry was not a number. ")
+        difficulty = int(difficulty)
+        if difficulty ==0:
+            prYellow("Invalid. Your entry was not a 1, 2 or 3. ")
+    word = random.choice(word_list[difficulty]).upper()
+    print(word)   
+    os.system('clear')
+    prCyan("\nOkay, "+ name.capitalize() + "\nLet's begin!")
     play_game(word)
 
 """
@@ -283,13 +309,13 @@ def game_over(word, won, attempts):
         os.system('clear')
         print("\n ")
         prCyan("GAME OVER!\n")
-        prCyan("You lost.\n The word was " + word + ".")    
+        prCyan("Sorry, " + name + ". You lost.\n The word was " + word + ".")    
         prRed(display_hangman(attempts))
         continue_or_quit()
     if won:
         os.system('clear')
         print("\n ")
-        prCyan("WELL DONE!\n")
+        prCyan("WELL DONE, " + name + "!\n")
         prCyan("The word was " + word +".\n")
         prCyan("Congratulations, you guessed the word!\n")
         prPurple("""
@@ -327,7 +353,6 @@ name = get_name()
 intro_message()
 
     
-
 
 
     

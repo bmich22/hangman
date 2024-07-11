@@ -1,28 +1,29 @@
 word_list = [
-'apple',
-'butterfly',
-'cringe',
-'diplomat',
-'elephant',
-'firefly',
-'graveyard',
-'healthy',
-'industrial',
-'jasmine',
-'knuckle',
-'landslide',
-'martian',
-'nonsense',
-'opposite',
-'porous',
-'quiver',
-'raspberry',
-'serenade',
-'trouble',
-'upside',
-'vacancy',
-'wasteful',
-'xylophone',
-'yesterday',
-'zealous'
-]
+    ['apple','pear','train','gift', 'phone', 'bottle'],
+    ['zealous''upside','trouble','quiver','porous','cringe','healthy','firefly','elephant','jasmine','knuckle','martian',],
+    ['yesterday','xylophone','wasteful','vacancy','serenade','raspberry','opposite','butterfly','diplomat','graveyard','industrial','landslide','nonsense',]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
