@@ -66,12 +66,15 @@ def choose_word():
     while not valid_choice:
         difficulty = input("Please enter 1, 2 or 3 to choose a level of difficulty.")
         print(difficulty)
-        if not difficulty.isnumeric():
-            prYellow("Invalid. Your entry was not a number. ")
-        difficulty = int(difficulty)
-        if difficulty ==0:
-            prYellow("Invalid. Your entry was not a 1, 2 or 3. ")
-    word = random.choice(word_list[difficulty]).upper()
+        if difficulty.isnumeric():
+            choice = int(difficulty) - 1
+            if choice == 0 or choice > 3:
+                prYellow("Invalid. Your entry was not a 1, 2 or 3.   ")
+            else:
+                valid_choice = True
+        else: 
+            prYellow("Invalid. Your entry was not a number.")
+    word = random.choice(word_list[choice]).upper()
     print(word)   
     os.system('clear')
     prCyan("\nOkay, "+ name.capitalize() + "\nLet's begin!")
