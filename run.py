@@ -183,18 +183,17 @@ Display Hangman based on number of wrong attempts
 def display_hangman(attempts):
     if attempts == 0:
         hangman_result = """
-********  HANGMAN  **********
-      -----------      
-      |         |      
-      |         |      
-      |                
-      |                
-      |                
-      |                
-      |     
-
-    WRONG ANSWERS: 0 / 6                   
-*****************************"""
+*************************************
+        -----------      
+        |         |       wrong
+        |         |      answers:
+        |                 0 / 6
+        |                
+        |                
+        |                
+        |     
+                 
+*************************************"""
     elif attempts == 1:
         hangman_result = """
 ********  HANGMAN  **********
