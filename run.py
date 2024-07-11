@@ -3,25 +3,104 @@ import os
 from wordlist import word_list
 
 # Add colors
-def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
- 
-def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
- 
-def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
- 
-def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
- 
 def prCyan(skk): print("\033[96m {}\033[00m" .format(skk))
- 
 
+def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
+
+def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
+
+def get_name():
+    print("""\n
+LET'S PLAY A GAME OF HANGMAN.
+""")
+    prCyan("""
+*****************************""") 
+    prRed("""
+      -----------      
+      |         |      
+      |         |      
+      |                
+      |                
+      |                
+      |                
+      |                
+      |    
+    """)            
+    
+    prCyan("""                        
+*****************************\n""")
+    new_name = input("Please enter your name:  ")
+    # prCyan("\nHello, " + new_name.capitalize() + ".\n")
+    # prCyan("If you make six wrong guesses, you lose!\n")
+    # prCyan("Let's begin.")
+    return new_name
+
+def intro_message():
+    os.system('clear')
+    prCyan("\nHello, " + name.capitalize() + ".\n")
+    prCyan("Guess letters or the whole word!\n")
+    prCyan("If you make six wrong guesses, you lose!\n")
+    prCyan("Let's begin.")
+    choose_word()
 
 # Choose a random word from the word list
 def choose_word():
     word = random.choice(word_list).upper()
     return word
 
+def continue_message():
+    prCyan("\nHello again, " + name.capitalize() + ".\n")
+    prCyan("If you make six wrong guesses, you lose!\n")
+    prCyan("Here we go.")
+    choose_word()
+
+# # Add colors
+# def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
+ 
+# def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
+ 
+# def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
+ 
+# def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
+ 
+# def prCyan(skk): print("\033[96m {}\033[00m" .format(skk))
+ 
+# # def get_name():
+# #     print("""\n
+# # LET'S PLAY A GAME OF HANGMAN.
+# # """)
+# #     prCyan("""
+# # *****************************""") 
+# #     prRed("""
+# #       -----------      
+# #       |         |      
+# #       |         |      
+# #       |                
+# #       |                
+# #       |                
+# #       |                
+# #       |                
+# #       |    
+# #     """)            
+    
+# #     prCyan("""                        
+# # *****************************\n""")
+# #     new_name = input("Please enter your name:  ")
+# #     main(name)
+
+# # def intro_message():
+# #     prCyan("\nHello, " + name.capitalize() + ".\n")
+# #     prCyan("If you make six wrong guesses, you lose!\n")
+# #     prCyan("Let's begin.")
+
+# # def continue_message():
+# #     prCyan("\nHello again, " + name.capitalize() + ".\n")
+# #     prCyan("If you make six wrong guesses, you lose!\n")
+# #     prCyan("Here we go.")
+
+
 # Play game
-def play_game(word):
+def play_game():
     # Convert word into a string of its letters
     word_letters = list(word)
 
@@ -56,8 +135,9 @@ def play_game(word):
     while not won and attempts < 6:
         # Create variable for player's guess
         print(display_hangman(attempts))
+        prCyan(name)
         prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.\n")
-        print(display_wordstring)
+        prCyan(display_wordstring)
         print("\n")
         guess = input("Please guess a letter or you can try to guess the word.  ").upper()
         if guess.isalpha() and len(guess) == 1:
@@ -100,7 +180,7 @@ def play_game(word):
         else:
             os.system('clear')
             prCyan("Oops!!\nYou did not enter a letter or word, please try again.\n")
-    game_over(word, won, attempts)
+    game_over(won, attempts)
 
 # Display Hangman based on number of wrong attempts
 def display_hangman(attempts):
@@ -223,7 +303,7 @@ WRONG ANSWERS: 6/6  YOU LOST!
     return hangman_result
 
 # Show win or lost to player
-def game_over(word, won, attempts):
+def game_over(won, attempts):
     if attempts >= 6:
         os.system('clear')
         print("\n ")
@@ -252,50 +332,66 @@ def game_over(word, won, attempts):
 
 # Ask player to continue playing or quit
 def continue_or_quit():
+    print()
     play_again = False
     while not play_again:
         reply = input("\nWould you like to play again?\nPlease enter Y to play again and N to quit.").upper()
         if reply == "Y":
             os.system('clear')
             play_again = True
-            main()
+            continue_message()
         elif reply == "N":
             prCyan("\nThank you for playing today.\nGoodbye!\n")
             exit()
         else:
             print("\nYour entry was invalid.\n")
 
-# Main function    
-def main():
-    print("""\n
-LET'S PLAY A GAME OF HANGMAN.
-""")
-    prCyan("""
-*****************************""") 
-    prRed("""
-      -----------      
-      |         |      
-      |         |      
-      |                
-      |                
-      |                
-      |                
-      |                
-      |    
-    """)            
+name = get_name()
+intro_message()
+word = choose_word()
+play_game()
+
+# # Main function    
+# def main(name):
+# #     print("""\n
+# # LET'S PLAY A GAME OF HANGMAN.
+# # """)
+# #     prCyan("""
+# # *****************************""") 
+# #     prRed("""
+# #       -----------      
+# #       |         |      
+# #       |         |      
+# #       |                
+# #       |                
+# #       |                
+# #       |                
+# #       |                
+# #       |    
+# #     """)            
     
-    prCyan("""                        
-*****************************\n""")
-    name = input("Please enter your name:  ")
-    os.system('clear')
-    prCyan("\nHello, " + name.capitalize() + ".\n")
-    prCyan("If you make six wrong guesses, you lose!\n")
-    prCyan("Let's begin.")
-    word = choose_word()
-    play_game(word)
+# #     prCyan("""                        
+# # *****************************\n""")
+# #     name = input("Please enter your name:  ")
+# #     os.system('clear')
+# #     prCyan("\nHello, " + name.capitalize() + ".\n")
+# #     prCyan("If you make six wrong guesses, you lose!\n")
+# #     prCyan("Let's begin.")
+# #     # name = get_name()
+#     word = choose_word()
+#     play_game(word)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
+
+# Main function    
+# def main(name):
+#     word = choose_word()
+#     play_game(word)
+
+# if __name__ == "__main__":
+#     main()
 
 
+    
 
