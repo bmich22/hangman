@@ -61,7 +61,8 @@ def choose_word():
       |   2 = INTERMEDIATE              
       |   3 = DIFFICULT        
       |              
-      |                              
+      |
+
 *****************************""")
     valid_choice = False
     while not valid_choice:
@@ -131,9 +132,11 @@ def play_game(word):
         # Create variable for player's guess and
         # print messages and outcomes
         print(display_hangman(attempts))
+        print("\n")
         prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
         print("Letters already chosen: ")
         print(guessed_letters)
+        print("\n")
         prCyan(display_wordstring)
         prYellow(message)
         guess = input("Please guess a letter or you can try to guess the word.\n").upper()
@@ -190,9 +193,10 @@ def display_hangman(attempts):
       |                
       |                
       |                
-      |                                                    
-    
-*** WRONG ANSWERS: 0 / 6 ***"""
+      |     
+                                                     
+    WRONG ANSWERS: 0 / 6                   
+*****************************"""
     elif attempts == 1:
         hangman_result = """
 ********  HANGMAN  **********
@@ -203,9 +207,10 @@ def display_hangman(attempts):
       |                
       |                
       |                
-      |                               
-                       
-*** WRONG ANSWERS: 1 / 6 ***"""
+      | 
+
+    WRONG ANSWERS: 1 / 6                   
+*****************************"""
 
     elif attempts == 2:
         hangman_result = """
@@ -217,9 +222,10 @@ def display_hangman(attempts):
       |         |      
       |         |      
       |                
-      |                
-                       
-*** WRONG ANSWERS: 1 / 6 ***"""
+      |
+
+    WRONG ANSWERS: 2 / 6                   
+*****************************"""
 
     elif attempts == 3:
         hangman_result = r"""         
@@ -233,7 +239,8 @@ def display_hangman(attempts):
       |                
       |                
 
-*** WRONG ANSWERS: 3 / 6 ***"""
+    WRONG ANSWERS: 3 / 6                   
+*****************************"""
 
     elif attempts == 4:
         hangman_result = r"""         
@@ -247,7 +254,8 @@ def display_hangman(attempts):
       |                
       |                
                            
-*** WRONG ANSWERS: 4 / 6 ***"""
+    WRONG ANSWERS: 4 / 6                   
+*****************************"""
          
 
     elif attempts == 5:
@@ -261,9 +269,9 @@ def display_hangman(attempts):
       |         |      
       |        /       
       |              
-                       
-    
-*** WRONG ANSWERS: 5 / 6 ***"""
+                           
+    WRONG ANSWERS: 5 / 6                   
+*****************************"""
 
     else:
         hangman_result = r"""
