@@ -141,6 +141,8 @@ def play_game(word):
     # Create variable for puzzle not solved
     won = False
 
+    # Create empty message that will be populated
+    # as the player plas
     message = ""
 
     while not won and attempts < 6:
