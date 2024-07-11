@@ -90,7 +90,7 @@ def continue_message():
     prCyan("Hello again, " + name.capitalize() + ".")
     prCyan("Let's review how to play.")
     prCyan("Guess the letters or the whole word.")
-    prCyan("If you make six wrong guesses, you lose!")
+    prCyan("If you make six wrong guesses, you lose!\n")
     choose_word()
  
 """
@@ -134,7 +134,6 @@ def play_game(word):
         prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
         print("Letters already chosen: ")
         print(guessed_letters)
-        print("\n")
         prCyan(display_wordstring)
         prYellow(message)
         guess = input("Please guess a letter or you can try to guess the word.\n").upper()
@@ -191,8 +190,7 @@ def display_hangman(attempts):
       |                
       |                
       |                
-      |                              
-                       
+      |                                                    
     WRONG ANSWERS: 0 / 6
 *****************************
         """
