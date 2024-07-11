@@ -3,7 +3,7 @@ import os
 from wordlist import word_list
 from wordlist import levels_list
 
-# Add colors 
+# Functions to print colored text
 def prCyan(skk): print("\033[96m {}\033[00m" .format(skk))
 def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
 def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
@@ -48,7 +48,8 @@ def intro_message():
     choose_word()
 
 """
-Choose a random word from the word list  
+Choose a word difficulty and a random 
+word from the corresponding list  
 """
 def choose_word():
     print("What level of difficulty would you like to play?")
@@ -63,11 +64,10 @@ def choose_word():
       |   3 = DIFFICULT            
       |                              
 
-*****************************"""
-)
+*****************************""")
     valid_choice = False
     while not valid_choice:
-        difficulty = input("\nPlease enter 1, 2 or 3 to choose a level of difficulty.")
+        difficulty = input("\nPlease enter 1, 2 or 3 to choose a level of difficulty.\n")
         print(difficulty)
         if difficulty.isnumeric():
             choice = int(difficulty) - 1
@@ -96,18 +96,6 @@ def continue_message():
     prCyan("Guess the letters or the whole word.")
     prCyan("If you make six wrong guesses, you lose!\n")
     choose_word()
-    # play_game(word)
-
-# # Add colors
-# def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
- 
-# def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
- 
-# def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
- 
-# def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
- 
-# def prCyan(skk): print("\033[96m {}\033[00m" .format(skk))
  
 """
 Play game  
@@ -130,12 +118,10 @@ def play_game(word):
     word_string = ["_" for x in range(num_of_letters)]
     display_wordstring = " ".join(word_string)
 
-    # Create variables for guesses
+    # Create lists for guesses and variable for attempts
     guessed_letters = []
     guessed_words = []
     guessed_correct_letters = []
-
-    # Create variable to count the number of wrong attempts
     attempts = 0
 
     # Create variable for puzzle not solved
@@ -315,7 +301,7 @@ WRONG ANSWERS: 6/6  YOU LOST!
     return hangman_result
 
 """
-Show win or lost to player  
+Display win or lost to player  
 """
 def game_over(word, won, attempts):
     if attempts >= 6:
@@ -360,7 +346,7 @@ def continue_or_quit():
         else:
             print("\nYour entry was invalid.\n")
 
-# Name is global variable, intro_message 
+# name is global variable, intro_message 
 # starts the game for the new player
 name = get_name()
 intro_message()
