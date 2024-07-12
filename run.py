@@ -64,18 +64,6 @@ def choose_word():
         |                    
         """)                   
     prCyan("*"*30)
-    print("""
-********  HANGMAN  **********
-      -----------      
-      |         |      
-      |               
-      |   1 = EASY                 
-      |   2 = INTERMEDIATE              
-      |   3 = DIFFICULT        
-      |              
-      |
-
-*****************************""")
     valid_choice = False
     while not valid_choice:
         difficulty = input("\nPlease enter 1, 2 or 3 to choose a level of difficulty.\n")
