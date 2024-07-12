@@ -1,5 +1,5 @@
 
-# Hangman-word-game
+# hangman-word-game
 Hangman-word-game  is a command-line application built with Python that hosts the word game, Hangman.  The game has three difficulty levels and is loaded with over 1000 words. 
 
 [Here is the live version of my project.](https://hangman-word-game-f5f390685594.herokuapp.com/)
@@ -85,6 +85,7 @@ The following are sources of information used in building Quiz - Fun
 | [adamj.eu](https://adamj.eu/tech/2022/11/04/why-does-python-deprecationwarning-invalid-escape-sequence/)| Python | Solved error for using slash(\) in the hangman print statements, by adding r before the quotations  
 | [codeguage.com](https://www.codeguage.com/courses/python/strings-string-padding) | Python | Centering strings, used for start screen, hangman displays and win and loss displays
 | [peps.python.org/](https://peps.python.org/pep-0008/#:~:text=spaces%20for%20indentation.-,Maximum%20Line%20Length,be%20limited%20to%2072%20characters) | Python | Maximum Line Length - help with resolving space errors in PEP8 Python Validator 
+|[kite.com](https://youtu.be/m4nEnsavl6w?si=32eWJZP4K3RDIuu_) |Python |How to build HANGMAN with Python in 10 MINUTES, help with broad logic sequence
 
 ### Acknowledgements
 * Thank you to [Chris Quinn](https://github.com/10xOXR), my mentor at Code Institute.
