@@ -13,6 +13,7 @@ def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 Get the name of the new player 
 """
 def get_name():
+    print("\n")
     prYellow("LET'S PLAY A GAME OF HANGMAN.\n")
     prCyan(" Hangman ".center(30,"*"))
     prRed("""
@@ -48,7 +49,21 @@ Choose a word difficulty and a random
 word from the corresponding list  
 """
 def choose_word():
-    print("What level of difficulty would you like to play?")
+    print("What level of difficulty would you like to play?\n")
+    prCyan(" Hangman ".center(30,"*"))
+    prRed("""
+        -----------      
+        |         |      
+        |         |     
+        |                
+        |   1 = EASY                 
+        |   2 = INTERMEDIATE              
+        |   3 = DIFFICULT            
+        |                
+        |                
+        |                    
+        """)                   
+    prCyan("*"*30)
     print("""
 ********  HANGMAN  **********
       -----------      
@@ -76,7 +91,7 @@ def choose_word():
     word = random.choice(word_list[choice]).upper()
     print(word)   
     os.system('clear')
-    prCyan("Let's begin!")
+    print("Let's begin!")
     play_game(word,choice)
 
 """
@@ -128,9 +143,9 @@ def play_game(word, choice):
         # Create variable for player's guess and
         # print messages and outcomes
         prCyan("PLAYER: "+ name.capitalize() + "  |  LEVEL: "+ levels_list[choice])
-        print("*" * 40)
-        print(display_hangman(attempts))
-        print("*" * 40)
+        prCyan("*" * 40)
+        prRed(display_hangman(attempts))
+        prCyan("*" * 40)
         print("Letters already chosen: ")
         print(guessed_letters)
         prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
@@ -182,7 +197,6 @@ Display Hangman based on number of wrong attempts
 def display_hangman(attempts):
     if attempts == 0:
         hangman_result = """
-*************************************
         -----------      
         |         |       wrong
         |         |      answers:
@@ -191,11 +205,9 @@ def display_hangman(attempts):
         |                
         |                
         |     
-                 
-*************************************"""
+                 """
     elif attempts == 1:
         hangman_result = """
-*************************************
         -----------      
         |         |       wrong
         |         |      answers:
@@ -204,12 +216,10 @@ def display_hangman(attempts):
         |                
         |                
         |     
-                 
-*************************************"""
+                 """
 
     elif attempts == 2:
         hangman_result = """
-*************************************
         -----------      
         |         |       wrong
         |         |      answers:
@@ -218,12 +228,10 @@ def display_hangman(attempts):
         |         |       
         |                
         |     
-                 
-*************************************"""
+                 """
 
     elif attempts == 3:
         hangman_result = r"""         
-*************************************
         -----------      
         |         |       wrong
         |        ( )     answers:
@@ -232,12 +240,10 @@ def display_hangman(attempts):
         |                
         |                
         |     
-                 
-*************************************"""
+                 """
 
     elif attempts == 4:
         hangman_result = r"""         
-*************************************
         -----------      
         |         |       wrong
         |         |      answers:
@@ -246,13 +252,11 @@ def display_hangman(attempts):
         |         |       
         |                
         |     
-                 
-*************************************"""
+                 """
          
 
     elif attempts == 5:
         hangman_result = r"""        
-*************************************
         -----------      
         |         |       wrong
         |         |      answers:
@@ -261,12 +265,10 @@ def display_hangman(attempts):
         |         |       
         |        /        
         |     
-                 
-*************************************"""
+                 """
 
     else:
         hangman_result = r"""
-*************************************
         -----------      
         |         |       wrong
         |         |      answers:
@@ -275,8 +277,7 @@ def display_hangman(attempts):
         |         |        YOU
         |        / \      LOST!
         |     
-                 
-*************************************"""
+                 """
     return hangman_result
 
 """
@@ -286,27 +287,29 @@ def game_over(word, won, attempts):
     if attempts >= 6:
         os.system('clear')
         print("\n ")
-        prCyan("GAME OVER!")
-        prCyan("Sorry, " + name + ". You lost.\n The word was " + word + ".")    
+        prCyan("GAME OVER")
+        print("Sorry, " + name + ". You lost.")    
+        prCyan("The word was " + word + ".")
+        print("\n")
+        prRed(" Hangman ".center(40,"*"))
         prRed(display_hangman(attempts))
+        prRed("*" * 40)
         continue_or_quit()
     if won:
         os.system('clear')
         print("\n ")
-        prCyan("Well done, " + name + "!")
+        print("Well done, " + name + "!")
         prCyan("The word was " + word +".")
         prCyan("Congratulations, you guessed the word!")
-        prPurple("""
-********  HANGMAN  **********
-*****************************
-***                       ***
-***    CONGRATULATIONS    ***
-***       YOU WON!!       ***
-***                       ***
-***                       ***
-*****************************
-*****************************
-        """)
+        print("\n")
+        prPurple(" Hangman ".center(40,"*"))
+        prPurple("*" * 40)
+        prPurple("         ***         ".center(40,"*"))
+        prPurple("   CONGRATULATIONS   ".center(40,"*"))
+        prPurple("      YOU WON!!      ".center(40,"*"))
+        prPurple("         ***         ".center(40,"*"))
+        prPurple("*" * 40)
+        prPurple("*" * 40)
         continue_or_quit()
 
 """
