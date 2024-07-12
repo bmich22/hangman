@@ -66,7 +66,7 @@ def choose_word():
     prCyan("*"*30)
     valid_choice = False
     while not valid_choice:
-        difficulty = input("\nPlease enter 1, 2 or 3 to choose a level of difficulty.\n")
+        difficulty = input("\nPlease enter 1, 2 or 3 to choose a level of difficulty.")
         print(difficulty)
         if difficulty.isnumeric():
             choice = int(difficulty) - 1
@@ -139,7 +139,7 @@ def play_game(word, choice):
         prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
         prCyan(" " + display_wordstring)
         prYellow(message)
-        guess = input("Please guess a letter or you can try to guess the word.\n").upper()
+        guess = input("Please guess a letter or you can try to guess the word.").upper()
         if guess.isalpha() and len(guess) == 1:
                 if guess in guessed_letters:
                     os.system('clear')
