@@ -31,7 +31,7 @@ LET'S PLAY A GAME OF HANGMAN.
     
     prCyan("""                        
 *****************************\n""")
-    new_name = input("Please enter your name:  \n").capitalize()
+    new_name = input("Please enter your name:  ").capitalize()
     return new_name
 
 """ 
@@ -79,9 +79,8 @@ def choose_word():
     word = random.choice(word_list[choice]).upper()
     print(word)   
     os.system('clear')
-    prCyan("Okay, "+ name.capitalize() + ". You chose difficulty level: "+ levels_list[choice])
     prCyan("Let's begin!")
-    play_game(word)
+    play_game(word,choice)
 
 """
 Message to continuing player 
@@ -97,7 +96,7 @@ def continue_message():
 """
 Play game  
 """
-def play_game(word):
+def play_game(word, choice):
     # Convert word into a list of its letters
     word_letters = list(word)
 
@@ -131,6 +130,7 @@ def play_game(word):
     while not won and attempts < 6:
         # Create variable for player's guess and
         # print messages and outcomes
+        prCyan("PLAYER: "+ name.capitalize() + "  |  LEVEL: "+ levels_list[choice])
         print(display_hangman(attempts))
         print("Letters already chosen: ")
         print(guessed_letters)
@@ -316,7 +316,7 @@ Ask player to continue playing or quit
 def continue_or_quit():
     play_again = False
     while not play_again:
-        reply = input("\nWould you like to play again?\nPlease enter Y to play again and N to quit.\n").upper()
+        reply = input("\nWould you like to play again?\nPlease enter Y to play again and N to quit.").upper()
         if reply == "Y":
             os.system('clear')
             continue_message()
@@ -324,7 +324,7 @@ def continue_or_quit():
             prCyan("\nThanks for playing today, " + name +".\nGoodbye!\n")
             exit()
         else:
-            prYellow("\nYour entry was invalid.\n")
+            prYellow("\nYour entry was invalid. Please enter Y or N. \n")
 
 # name is global variable, intro_message 
 # starts the game for the new player
