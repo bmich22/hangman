@@ -285,7 +285,7 @@ def game_over(word, won, attempts):
         os.system('clear')
         print("\nWell done, " + name + "!\n")
         prCyan("The word was " + word +".")
-        prCyan("Congratulations, you guessed the word!")
+        prCyan("Congratulations, you guessed the word!\n")
         prPurple(" Hangman ".center(40,"*"))
         prPurple("*" * 40)
         prPurple("         ***         ".center(40,"*"))
