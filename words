@@ -1,17 +1,3 @@
-levels_list = ['EASY', 'INTERMEDIATE', 'DIFFICULT']
-
-word_list = [
-    [
-'apple',
-'pear',
-'train',
-'gift', 
-'phone', 
-'bottle', 
-'able',
-'acid',
-'arch',
-'army',
 'baby',
 'back',
 'ball',
@@ -439,32 +425,3 @@ word_list = [
 'wound',
 'wrong',
 'young',
-],
-    ['zealous''upside','trouble','quiver','porous','cringe','healthy','firefly','elephant','jasmine','knuckle','martian',],
-    ['yesterday','xylophone','wasteful','vacancy','serenade','raspberry','opposite','butterfly','diplomat','graveyard','industrial','landslide','nonsense',]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
