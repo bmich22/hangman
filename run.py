@@ -13,24 +13,21 @@ def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 Get the name of the new player 
 """
 def get_name():
-    prYellow("""
-LET'S PLAY A GAME OF HANGMAN.
-""")
-    prCyan("""
-*****************************""") 
+    prYellow("LET'S PLAY A GAME OF HANGMAN.\n")
+    prCyan(" Hangman ".center(30,"*"))
     prRed("""
-      -----------      
-      |         |      
-      |         |     
-      |                
-      |                
-      |                
-      |                
-      |                    
-    """)            
-    
-    prCyan("""                        
-*****************************\n""")
+        -----------      
+        |         |      
+        |         |     
+        |                
+        |                
+        |                
+        |                
+        |                    
+        
+        """)            
+        
+    prCyan("*"*30)
     new_name = input("Please enter your name:  ").capitalize()
     return new_name
 
@@ -131,7 +128,9 @@ def play_game(word, choice):
         # Create variable for player's guess and
         # print messages and outcomes
         prCyan("PLAYER: "+ name.capitalize() + "  |  LEVEL: "+ levels_list[choice])
+        print("*" * 40)
         print(display_hangman(attempts))
+        print("*" * 40)
         print("Letters already chosen: ")
         print(guessed_letters)
         prCyan("The word you're trying to guess has " + str(num_of_letters) + " letters.")
