@@ -235,7 +235,7 @@ def display_hangman(attempts):
         -----------      
         |         |       wrong
         |         |      answers:
-        |        ( )        4 / 6
+        |        ( )      4 / 6
         |        \|/      
         |         |       
         |                
@@ -274,9 +274,8 @@ Display win or lost to player
 def game_over(word, won, attempts):
     if attempts >= 6:
         os.system('clear')
-        print("\n ")
-        prCyan("GAME OVER")
-        print("Sorry, " + name + ". You lost.")    
+        print("Sorry, " + name + ". You lost.") 
+        prCyan("GAME OVER.")   
         prCyan("The word was " + word + ".")
         print("\n")
         prRed(" Hangman ".center(40,"*"))
@@ -285,7 +284,6 @@ def game_over(word, won, attempts):
         continue_or_quit()
     if won:
         os.system('clear')
-        print("\n ")
         print("Well done, " + name + "!\n")
         prCyan("The word was " + word +".")
         prCyan("Congratulations, you guessed the word!")
