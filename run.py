@@ -38,7 +38,7 @@ Message to new player
 def intro_message():
     os.system('clear')
     print("\n")
-    prCyan("Hello, " + name + ".")
+    print("Hello, " + name + ".")
     prCyan("Here is how to play.")
     prCyan("Guess the letters or the whole word.")
     prCyan("If you make six wrong guesses, you lose!\n")
@@ -51,7 +51,7 @@ word from the corresponding list
 def choose_word():
     print("What level of difficulty would you like to play?\n")
     prCyan(" Hangman ".center(30,"*"))
-    prRed("""
+    print("""
         -----------      
         |         |      
         |         |     
@@ -79,7 +79,7 @@ def choose_word():
     word = random.choice(word_list[choice]).upper()
     print(word)   
     os.system('clear')
-    print("Let's begin!")
+    print("Let's begin!\n")
     play_game(word,choice)
 
 """
@@ -87,7 +87,7 @@ Message to continuing player
 """
 def continue_message():
     os.system('clear')
-    prCyan("Hello again, " + name.capitalize() + ".")
+    print("Hello again, " + name.capitalize() + ".")
     prCyan("Let's review how to play.")
     prCyan("Guess the letters or the whole word.")
     prCyan("If you make six wrong guesses, you lose!\n")
@@ -132,7 +132,7 @@ def play_game(word, choice):
         # print messages and outcomes
         prCyan("PLAYER: "+ name.capitalize() + "  |  LEVEL: "+ levels_list[choice])
         prCyan("*" * 40)
-        prRed(display_hangman(attempts))
+        print(display_hangman(attempts))
         prCyan("*" * 40)
         print("Letters already chosen: ")
         print(guessed_letters)
@@ -286,7 +286,7 @@ def game_over(word, won, attempts):
     if won:
         os.system('clear')
         print("\n ")
-        print("Well done, " + name + "!")
+        print("Well done, " + name + "!\n")
         prCyan("The word was " + word +".")
         prCyan("Congratulations, you guessed the word!")
         print("\n")
