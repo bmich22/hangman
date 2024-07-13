@@ -18,6 +18,9 @@ def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
 def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 
 
+def prLightPurple(skk): print("\033[94m {}\033[00m" .format(skk))
+
+
 """
 Get the name of the new player
 """
@@ -316,10 +319,10 @@ def game_over(word, won, attempts):
         print("\nWell done, " + name + "!\n")
         prCyan("The word was " + word + ".")
         prCyan("Congratulations, you guessed the word!\n")
-        prPurple(" Hangman ".center(40, "*"))
-        prPurple("*" * 40)
-        prPurple("         ***         ".center(40, "*"))
-        prPurple("   CONGRATULATIONS   ".center(40, "*"))
+        prLightPurple(" Hangman ".center(40, "*"))
+        prLightPurple("*" * 40)
+        prLightPurple("         ***         ".center(40, "*"))
+        prLightPurple("   CONGRATULATIONS   ".center(40, "*"))
         prPurple("      YOU WON!!      ".center(40, "*"))
         prPurple("         ***         ".center(40, "*"))
         prPurple("*" * 40)
