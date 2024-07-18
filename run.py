@@ -148,6 +148,8 @@ def play_game(word, choice):
 
     # Create a string of dashes for each letter in word
     word_string = ["_" for x in range(num_of_letters)]
+
+    # Build string of dashes and correct letters as they are guessed
     display_wordstring = " ".join(word_string)
 
     # Create lists for guesses and variable for attempts
@@ -164,8 +166,8 @@ def play_game(word, choice):
     message = ""
 
     while not won and attempts < 6:
-        # Create variable for player's guess and
-        # print messages and outcomes
+        # Create variable for player's guess, validate
+        # input, test for correct, print messages and outcomes
         prCyan("PLAYER: " + name.capitalize() + "  |  LEVEL: "
                + levels_list[choice])
         prCyan("*" * 40)
