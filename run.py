@@ -209,12 +209,14 @@ def play_game(word, choice):
                 won = True
             else:
                 os.system('clear')
-                message = "Your word guess is incorrect, please try again."
+                message = "You guessed '" + guess + "'. Your word guess \
+                    is incorrect, please try again."
                 guessed_words.append(guess)
                 attempts += 1
         else:
             os.system('clear')
-            message = "Oops!\nYou didn't enter a letter or word, try again.\n"
+            message = "Oops!\nYou guessed '" + guess + "' and that's not a\
+                 letter or word, try again.\n"
     game_over(word, won, attempts)
 
 
