@@ -57,7 +57,8 @@ Hangman-word-game has room to grow
 | [hangman word game](https://hangman-word-game-f5f390685594.herokuapp.com/)  (run.py)| Python |[PEP8 Python Validator](https://pep8ci.herokuapp.com/#)  | No errors found. |![screenshot](readme-images/ci-python-linter-hangman.png) |
 | run.py | Python | Test name, must have some input but input cannot be all numbers and cannot have characters except one space or a dash | Input is validated by showing error message and reprompt for input |![screenshot](readme-images/validation%20-name.png)
 | run.py | Python | Test that only the number 1, 2 or 3 is entered for difficulty level | Input is validated by showing error message and reprompt for input |![screenshot](readme-images/validation-difficulty-level.png)
-| run.py | Python | Test that only a letter or word is entered for guess| Input is validated by showing error message and reprompt for input |![screenshot](readme-images/validation%20-%203.png)
+| run.py | Python | Test that guess must be a letter or word | Input is validated then displayed with error message and reprompt for input |![screenshot](readme-images/validation-wrong-word.png)
+| run.py | Python | Test word guess is correct | Input is tested then displayed with message showing that guess is incorrect and reprompt for input|![screenshot](readme-images/validation-not-a-letter.png)
 | run.py | Python | Test that only Y or N is entered to play again or quit| Input is validated by showing error message and reprompt for input |![screenshot](readme-images/validation%20-%204.png)
 
 ## Unfixed Bugs

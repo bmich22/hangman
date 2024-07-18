@@ -214,8 +214,8 @@ def play_game(word, choice):
                 attempts += 1
         else:
             os.system('clear')
-            message = "Oops! '" + guess + "' is not a valid guess, "\
-"please try again.\n"
+            message = "Oops! '" + guess + "' is not a valid guess,"\
+                " please try again."
     game_over(word, won, attempts)
 
 
