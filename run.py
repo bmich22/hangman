@@ -171,9 +171,11 @@ def play_game(word, choice):
         prCyan("*" * 40)
         print(display_hangman(attempts))
         prCyan("*" * 40)
-        print("Letters already chosen: ")
+        print("Already chosen: ")
         print(guessed_letters)
-        prCyan("The word you're trying to guess has " +
+        if bool(guessed_words):
+            print(guessed_words)
+        prCyan("\nThe word you're trying to guess has " +
                str(num_of_letters) + " letters.")
         prCyan(" " + display_wordstring + "\n")
         prYellow(message)
