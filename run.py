@@ -24,6 +24,7 @@ Get the name of the new player
 
 
 def get_name():
+    os.system('clear')
     print("\n")
     prYellow("LET'S PLAY A GAME OF HANGMAN.\n")
     prCyan(" Hangman ".center(30, "*"))
@@ -39,7 +40,19 @@ def get_name():
 
 """)
     prCyan("*"*30)
-    new_name = input("Please enter your name:  ").capitalize()
+    valid_name = False
+    while not valid_name:
+        new_name = input("Please enter your name:  ").capitalize()
+        if bool(new_name) and not new_name.isnumeric():
+            if new_name.replace(" ", "").isalnum() \
+                    or new_name.replace("-", "").isalnum():
+                valid_name = True
+            else:
+                prYellow("You didn't enter a valid name.")
+                prYellow("You must enter a valid name to continue.")
+        else:
+            prYellow("You didn't enter a valid name.")
+            prYellow("You must enter a valid name to continue.")
     return new_name
 
 
@@ -147,7 +160,7 @@ def play_game(word, choice):
     won = False
 
     # Create empty message that will be populated
-    # as the player plas
+    # as the player plays
     message = ""
 
     while not won and attempts < 6:

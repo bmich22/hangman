@@ -30,7 +30,7 @@ Colors were utilized, as displayed below, by adding functions to call particular
 Personalization | On the start screen the user is asked their name. The name is displayed throughout the program and used in the messages. When the user chooses to play again, the user skips the opening screen where they are asked to enter their name. They go directly to the screen to choose their difficulty level and they receive a "Hello, again (name)" message. | ![screenshot](readme-images/name-1.png)![screenshot](readme-images/name-3.png) |![screenshot](readme-images/name-2.png)![screenshot](readme-images/name-4.png) 
 |Difficulty Levels | The user can choose from three difficulty levels, 1 - Easy (4 and 5 letter words, 400+ words), 2 - Intermediate (6 and 7 letter words, 200+ words) and 3 - Difficult (8+ letter words, 100+ words).| ![screenshot](readme-images/difficulty%20-%201.png) |![screenshot](readme-images/difficulty%20-%202.png) 
 |Play Again or Quit | When the game is over the user can choose to play again or quit. | ![screenshot](readme-images/play-again-1.png) 
-|Validation and Error Messages | Every instance of user input, except for the name input (because a name could be anything, such as R2D2) is validated.  When user input is not valid, an error message appears in yellow with a prompt to re-enter the answer. |![screenshot](readme-images/validation%20-%201.png) ![screenshot](readme-images/validation%20-%203.png) |![screenshot](readme-images/validation%20-%202.png) ![screenshot](readme-images/validation%20-%204.png) 
+|Validation and Error Messages | Every instance of user input, is validated.  When user input is not valid, an error message appears in yellow with a prompt to re-enter the answer. |![screenshot](readme-images/validation%20-%201.png) ![screenshot](readme-images/validation%20-%203.png) |![screenshot](readme-images/validation%20-%202.png) ![screenshot](readme-images/validation%20-%204.png) 
 |Instructions and information | At the beginning of the game simple instructions are displayed with how many errors can be made before losing. Another message explains how many letters are in the secret word. | ![screenshot](readme-images/instructions-info-1.png) |![screenshot](readme-images/instructions-info-2.png)
 |Hangman Displays | The Hangman displays the progression of the game with each error and shows how many errors have been made out of the total allowed of six. | ![screenshot](readme-images/hangman-display-0.png)![screenshot](readme-images/hangman-display-1.png)![screenshot](readme-images/hangman-display-2.png)![screenshot](readme-images/hangman-display-3.png) | ![screenshot](readme-images/hangman-display-4.png)![screenshot](readme-images/hangman-display-5.png)![screenshot](readme-images/hangman-display-6.png) 
 |Letters already chosen section | Letters that have already been chosen appear below the hangman display so the user can see what they've already chosen. If the user chooses the same letter twice, an invalid input message will appear in yellow and they can re-enter. This does not count as a wrong answer. | ![screenshot](readme-images/letters-1.png)  | ![screenshot](readme-images/letters-2.png)  
@@ -52,9 +52,10 @@ Hangman-word-game has room to grow
 
 ## Validator Testing
 
-| Page | Language | Validator | Outcome | Screenshot |
+| Page | Language | Validator/Test | Outcome | Screenshot |
 | ---- | -------- | --------- | ------- | ---------- |
-| https://hangman-word-game-f5f390685594.herokuapp.com/  (run.py)| Python |[PEP8 Python Validator](https://pep8ci.herokuapp.com/#)  | No errors found. |![screenshot](readme-images/ci-python-linter-hangman.png) |
+| [hangman word game](https://hangman-word-game-f5f390685594.herokuapp.com/)  (run.py)| Python |[PEP8 Python Validator](https://pep8ci.herokuapp.com/#)  | No errors found. |![screenshot](readme-images/ci-python-linter-hangman.png) |
+| run.py | Python | Test name, input cannot be all numbers and cannot be characters except one space or a dash |
 
 ## Unfixed Bugs
 There are no unfixed bugs.
@@ -80,6 +81,8 @@ The following are sources of information used in building Quiz - Fun
 | ------ | -------- | ----- |
 | [geeksforgeeks.org](https://www.geeksforgeeks.org/print-colors-python-terminal/) | Python | *Print Colors in Python terminal - Method 3: Print Color Text using ANSI Code in Python*, used throughout 
 | [geeksforgeeks.org](https://www.geeksforgeeks.org/clear-screen-python/) | Python | *How to clear screen in python?*, used throughout the program to keep display visually pleasing
+|[Max O'Didily](https://youtu.be/BEUiLMKF5B4?si=NaBklLyRLeu8rHk9) | Python | *How to Validate a Name Using Python (Simple)*
+|[COPAHOST](https://www.copahost.com/blog/input-python/#:~:text=Input%20validation%20using%20the%20module,print) | Python | *Input python: How to validate and manipulate user data*
 | [w3schools.com](https://www.w3schools.com/python/ref_string_isalpha.asp) | Python | *Python String isalpha() Method*, used to validate the guess in the play_game function
 | [w3schools.com](https://www.w3schools.com/python/ref_string_isnumeric.asp) | Python | *Python String isnumeric() Method*, used to validate choice of difficulty in choose_word function
 | [w3schools.com](https://www.w3schools.com/python/python_howto_remove_duplicates.asp) | Python | *How to Remove Duplicates From a Python List*, used to create list of the correct letters in the secret word with no duplicates, in order to later compare to guessed correct letters list, in play_game function
